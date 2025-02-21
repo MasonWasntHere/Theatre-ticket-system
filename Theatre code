@@ -1,0 +1,49 @@
+seats = [
+    ["---", "---", "---", "---", "---", "---", "---", "---", "-"],
+    ["|", "$40", "$50", "$50", "$50", "$50", "$50", "$50", "$40"],
+    ["|", "$30", "$30", "$40", "$50", "$50", "$40", "$30", "$30"],
+    ["|", "$20", "$20", "$30", "$40", "$40", "$30", "$20", "$20"],
+    ["|", "$10", "$20", "$20", "$20", "$20", "$20", "$20", "$10"],
+    ["|", "$10", "$20", "$20", "$20", "$20", "$20", "$20", "$10"],
+    ["|", "$10", "$20", "$20", "$20", "$20", "$20", "$20", "$10"],
+    ["|", "$10", "$10", "$10", "$10", "$10", "$10", "$10", "$10"],
+    ["|", "$10", "$10", "$10", "$10", "$10", "$10", "$10", "$10"],
+    ["|", "$10", "$10", "$10", "$10", "$10", "$10", "$10", "$10"]
+]  # stores all the seats and costs
+
+def display_seating(seats): # function for printing the seats 
+    for row in seats:
+        print(" ".join(row)) # prints the seats
+
+def select_seat(seats): # has user input seat row and column
+    try:
+        row = int(input("Enter in row number (1-9): "))
+        column = int(input("Enter in column number(1-8): "))
+
+        if seats[row][column] == ' X ':
+            print("Sorry, this seat is taken. Please choose another.")
+        elif row == 0:
+            print("Please enter a correct row number.")
+        else:
+            cost = seats[row][column]
+            seats[row][column] = ' X '  # turns selected seat into X
+            print(f"Seat selected successfully. The cost is {cost}. Thank you for purchasing a ticket.")
+    except (ValueError, IndexError):
+        print("Invalid input. Please try again.")
+        select_seat(seats)
+
+def sell_out_theater(seats):
+    for row in range(1, len(seats)):
+        for column in range(1, len(seats[row])):
+            seats[row][column] = ' X '
+    print("The theater has been sold out.")
+
+while True:
+    display_seating(seats)
+    user_input = input("Press 's' to sell out the entire theater or any other key to select a seat: ").lower()
+    if user_input == 's':
+        sell_out_theater(seats) # sells out the theater
+        print("Sorry, the theater is sold out.")
+        break
+    else:
+        select_seat(seats)
