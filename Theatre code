@@ -1,5 +1,4 @@
 seats = [
-    ["---", "---", "---", "---", "---", "---", "---", "---", "-"],
     ["|", "$40", "$50", "$50", "$50", "$50", "$50", "$50", "$40"],
     ["|", "$30", "$30", "$40", "$50", "$50", "$40", "$30", "$30"],
     ["|", "$20", "$20", "$30", "$40", "$40", "$30", "$20", "$20"],
@@ -8,8 +7,11 @@ seats = [
     ["|", "$10", "$20", "$20", "$20", "$20", "$20", "$20", "$10"],
     ["|", "$10", "$10", "$10", "$10", "$10", "$10", "$10", "$10"],
     ["|", "$10", "$10", "$10", "$10", "$10", "$10", "$10", "$10"],
-    ["|", "$10", "$10", "$10", "$10", "$10", "$10", "$10", "$10"]
+    ["|", "$10", "$10", "$10", "$10", "$10", "$10", "$10", "$10"],
+    ["---", "---", "---", "---", "---", "---", "---", "---", "-"],
 ]  # stores all the seats and costs
+
+seats = seats[::-1] # reverses the list
 
 def display_seating(seats): # function for printing the seats 
     for row in seats:
@@ -43,6 +45,7 @@ while True:
     user_input = input("Press 's' to sell out the entire theater or any other key to select a seat: ").lower()
     if user_input == 's':
         sell_out_theater(seats) # sells out the theater
+        display_seating(seats)
         print("Sorry, the theater is sold out.")
         break
     else:
