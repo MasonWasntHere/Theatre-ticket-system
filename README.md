@@ -1,2 +1,1 @@
-# Theatre-ticket-system
-This is a repository used for the Theatre ticket system assignment.
+In this code, I used stuff like functions, if statements, loops, and more. Inside of this code, you can purchase any seat available then afterwards it will turn into a 'X' and you cannot purchase it again. Meanwhile, there is a command where if you type 's', it will sell out the entire theatre and purchase every seat.
